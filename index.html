@@ -8,15 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-<div class="glow g1"></div><div class="glow g2"></div>
-<header>
+<body class="page-motion">
+<div class="cursor-glow" aria-hidden="true"></div><div class="glow g1"></div><div class="glow g2"></div>
+<header class="site-header reveal">
   <a class="brand" href="#"><b>P</b>PRIVITYS</a>
   <nav><a href="#como">Cómo funciona</a><a href="#features">Características</a><a href="#descargar">Descargar</a></nav>
   <a class="cta small" href="#descargar">Descargar app</a>
 </header>
 <main>
-<section class="hero">
+<section class="hero reveal-section">
   <div class="copy">
     <p class="eyebrow">PEOPLE · PARTIES · REAL CONNECTIONS</p>
     <h1>¿No sabes<br><span>dónde ir?</span></h1>
@@ -30,13 +30,13 @@
     <div class="float f2">♡ <b>Personas cerca</b><small>+48</small></div>
   </div>
 </section>
-<section class="features" id="features">
+<section class="features reveal-section" id="features">
  <article><i>⌖</i><h3>Descubre</h3><p>Encuentra parties en tu pueblo o ciudad.</p></article>
  <article><i>♧</i><h3>Conoce</h3><p>Personas que están en el mismo evento.</p></article>
  <article><i>♡</i><h3>Conecta</h3><p>Haz match solo con gente de ese party.</p></article>
  <article><i>▣</i><h3>Comparte</h3><p>Fotos, videos y momentos en tiempo real.</p></article>
 </section>
-<section class="split" id="como">
+<section class="split reveal-section" id="como">
  <div class="swipe-showcase" aria-label="Personas del party cambiando automáticamente">
   <div class="showcase-glow"></div>
   <div class="party-phone"><div class="phone-screen"><b>PRIVITYS</b><small>📍 Santo Domingo</small><div class="party-card"><em>AHORA</em><h4>After Party</h4><p>32 personas aquí</p><button type="button">Entrar</button></div></div></div>
@@ -49,9 +49,9 @@
  </div>
  <div><p class="eyebrow">LA FIESTA EN TUS MANOS</p><h2>Todo el ambiente<br><span>en un solo lugar.</span></h2><p>Usa tu ubicación para descubrir qué está pasando cerca. Entra al espacio de un party, mira quién está allí, comparte lo que sucede y conecta con personas que viven la misma actividad.</p><ul><li>📍 Parties cerca de ti</li><li>💬 Interacción en tiempo real</li><li>♥ Matches dentro del party</li></ul></div>
 </section>
-<section class="location"><div><p class="eyebrow">POR TU PUEBLO, SIEMPRE CERCA</p><h2>Encuentra parties<br><span>en cualquier lugar.</span></h2><p>Privitys usa tu ubicación para mostrarte lo que está pasando cerca de ti. También puedes explorar otras ciudades y descubrir dónde continúa la fiesta.</p></div><div class="map map-world"><img src="./world-map.png" alt="Mapa mundial de Privitys"><span class="map-pulse mp1"></span><span class="map-pulse mp2"></span><span class="map-pulse mp3"></span><span class="map-pulse mp4"></span><span class="map-pulse mp5"></span><div class="map-stat"><strong>48 ciudades</strong><small>con actividad ahora</small></div></div></section>
-<section class="final"><p class="eyebrow">PRIVITYS</p><h2>Conoce. Comparte.<br><span>No detengas la fiesta.</span></h2><p>Descubre dónde está pasando algo y vívelo con personas que están en la misma sintonía.</p><div class="stores"><a class="store" href="#"><small>PRÓXIMAMENTE EN</small><strong>App Store</strong></a><a class="store" href="#"><small>PRÓXIMAMENTE EN</small><strong>Google Play</strong></a></div></section>
+<section class="location reveal-section"><div><p class="eyebrow">POR TU PUEBLO, SIEMPRE CERCA</p><h2>Encuentra parties<br><span>en cualquier lugar.</span></h2><p>Privitys usa tu ubicación para mostrarte lo que está pasando cerca de ti. También puedes explorar otras ciudades y descubrir dónde continúa la fiesta.</p></div><div class="map map-world"><img src="./world-map.png" alt="Mapa mundial de Privitys"><span class="map-pulse mp1"></span><span class="map-pulse mp2"></span><span class="map-pulse mp3"></span><span class="map-pulse mp4"></span><span class="map-pulse mp5"></span><div class="map-stat"><strong>48 ciudades</strong><small>con actividad ahora</small></div></div></section>
+<section class="final reveal-section"><p class="eyebrow">PRIVITYS</p><h2>Conoce. Comparte.<br><span>No detengas la fiesta.</span></h2><p>Descubre dónde está pasando algo y vívelo con personas que están en la misma sintonía.</p><div class="stores"><a class="store" href="#"><small>PRÓXIMAMENTE EN</small><strong>App Store</strong></a><a class="store" href="#"><small>PRÓXIMAMENTE EN</small><strong>Google Play</strong></a></div></section>
 </main>
-<footer><div class="brand"><b>P</b>PRIVITYS</div><span>People. Parties. Real Connections.</span><nav><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Contacto</a></nav><small>© <span id="year"></span> Privitys</small></footer>
+<footer class="reveal-section"><div class="brand"><b>P</b>PRIVITYS</div><span>People. Parties. Real Connections.</span><nav><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Contacto</a></nav><small>© <span id="year"></span> Privitys</small></footer>
 <script src="./app.js"></script>
 </body></html>

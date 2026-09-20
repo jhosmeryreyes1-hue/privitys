@@ -18,3 +18,48 @@
 @keyframes mapPulse{0%,100%{transform:scale(.85);box-shadow:0 0 0 0 rgba(240,91,169,.65),0 0 20px rgba(240,91,169,.8)}50%{transform:scale(1.15);box-shadow:0 0 0 10px rgba(240,91,169,0),0 0 28px rgba(240,91,169,1)}}
 @keyframes mapRing{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.8);opacity:0}}
 @media(max-width:520px){.map-world{height:280px}.map-stat{bottom:14px}.map-pulse{width:8px;height:8px}}
+
+
+/* PRIVITYS motion system */
+html{scroll-behavior:smooth}
+body.page-motion{--mx:50%;--my:50%}
+.cursor-glow{position:fixed;z-index:0;width:360px;height:360px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(240,91,169,.10),transparent 68%);transform:translate(-50%,-50%);left:var(--mx);top:var(--my);filter:blur(8px);transition:left .25s ease-out,top .25s ease-out}
+.site-header,.hero,.features,.split,.location,.final,footer{position:relative;z-index:1}
+.reveal-section,.site-header{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.75,.2,1)}
+.reveal-section.is-visible,.site-header.is-visible{opacity:1;transform:none}
+.hero .copy{animation:heroCopyIn 1s .15s both cubic-bezier(.2,.75,.2,1)}
+.hero .visual{animation:heroVisualIn 1.15s .05s both cubic-bezier(.2,.75,.2,1)}
+.photo{animation:photoBreath 8s ease-in-out infinite alternate,photoZoom 12s ease-in-out infinite alternate}
+.float{animation:floatY 4s ease-in-out infinite}
+.f1{animation-delay:-1.4s}.f2{animation-delay:-2.7s}
+.store{transition:transform .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.store:hover{transform:translateY(-5px);border-color:rgba(240,91,169,.55);background:#17121a;box-shadow:0 12px 35px rgba(240,91,169,.14)}
+.features article{position:relative;overflow:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .35s ease,box-shadow .35s ease}
+.features article:before{content:"";position:absolute;width:160px;height:160px;border-radius:50%;left:50%;top:0;transform:translate(-50%,-70%);background:radial-gradient(circle,rgba(240,91,169,.18),transparent 70%);opacity:0;transition:opacity .4s ease}
+.features article:hover{transform:translateY(-9px);border-color:rgba(240,91,169,.38);box-shadow:0 22px 60px rgba(0,0,0,.35)}
+.features article:hover:before{opacity:1}
+.features article i{display:inline-block;transition:transform .4s ease}
+.features article:hover i{transform:translateY(-4px) scale(1.08) rotate(-5deg)}
+.tagline strong{display:inline-block;animation:taglinePulse 3s ease-in-out infinite}
+.swipe-showcase{animation:showcaseFloat 6s ease-in-out infinite}
+.swipe-stage .deck-card{animation:cardIdle 3.5s ease-in-out infinite}
+.swipe-stage .deck-card:nth-child(2){animation-delay:-1.1s}.swipe-stage .deck-card:nth-child(3){animation-delay:-2s}.swipe-stage .deck-card:nth-child(4){animation-delay:-2.8s}
+.swipe-stage:hover .deck-card{animation-play-state:paused}
+.map-world{animation:mapFloat 7s ease-in-out infinite}
+.map-world>img{animation:mapDrift 14s ease-in-out infinite alternate;transform-origin:center}
+.map-stat{animation:statFloat 3.5s ease-in-out infinite}
+.final h2 span{display:inline-block;animation:accentBreath 3s ease-in-out infinite}
+@keyframes heroCopyIn{from{opacity:0;transform:translateX(-35px)}to{opacity:1;transform:none}}
+@keyframes heroVisualIn{from{opacity:0;transform:translateX(35px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes photoBreath{from{transform:scale(1.01) translate3d(0,0,0)}to{transform:scale(1.045) translate3d(-7px,-4px,0)}}
+@keyframes photoZoom{from{background-position:50% 50%}to{background-position:54% 47%}}
+@keyframes floatY{0%,100%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(0,-12px,0) rotate(1deg)}}
+@keyframes showcaseFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes cardIdle{0%,100%{filter:brightness(1)}50%{filter:brightness(1.07)}}
+@keyframes mapFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes mapDrift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.07) translate3d(-1.5%,1%,0)}}
+@keyframes statFloat{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-7px)}}
+@keyframes taglinePulse{0%,100%{text-shadow:0 0 0 rgba(240,91,169,0)}50%{text-shadow:0 0 22px rgba(240,91,169,.3)}}
+@keyframes accentBreath{0%,100%{text-shadow:0 0 0 rgba(240,91,169,0)}50%{text-shadow:0 0 28px rgba(240,91,169,.22)}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}.cursor-glow{display:none}}
+@media(max-width:850px){.cursor-glow{display:none}.swipe-showcase{animation:none}.map-world{animation:none}}

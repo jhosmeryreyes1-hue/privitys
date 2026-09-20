@@ -30,3 +30,24 @@ stage?.addEventListener('pointerdown',e=>{startX=e.clientX;startY=e.clientY;stag
 stage?.addEventListener('pointerup',e=>{const dx=e.clientX-startX,dy=e.clientY-startY;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy))advance(dx>0?'like':'nope')});
 stage?.addEventListener('mouseenter',()=>timer&&clearInterval(timer));
 stage?.addEventListener('mouseleave',startTimer);
+
+
+// Scroll reveals + subtle pointer parallax for the landing page.
+const revealItems=document.querySelectorAll('.reveal-section, .site-header');
+const revealObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}})
+},{threshold:.12,rootMargin:'0px 0px -45px 0px'});
+revealItems.forEach(el=>revealObserver.observe(el));
+
+const page=document.body;
+if(page.classList.contains('page-motion')){
+  window.addEventListener('pointermove',(e)=>{
+    if(window.innerWidth<900)return;
+    page.style.setProperty('--mx',`${e.clientX}px`);
+    page.style.setProperty('--my',`${e.clientY}px`);
+  },{passive:true});
+}
+
+// Small stagger when feature cards enter the viewport.
+const featureCards=[...document.querySelectorAll('.features article')];
+featureCards.forEach((card,i)=>card.style.transitionDelay=`${i*70}ms`);
