@@ -208,9 +208,14 @@ feedWrap?.addEventListener('mouseleave',startFeedRotation);
     }
     if(toggle){toggle.textContent=lang==='es'?'EN':'ES'; toggle.setAttribute('aria-label',lang==='es'?'Switch to English':'Cambiar a español')}
   }
-  toggle?.addEventListener('click', (e) => {
+  // Robust language toggle: always read the current HTML language/state, then switch.
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-lang-toggle]');
+    if (!btn) return;
     e.preventDefault();
-    apply(currentLang === 'es' ? 'en' : 'es');
+    e.stopPropagation();
+    const next = root.lang === 'en' ? 'es' : 'en';
+    apply(next);
   });
-  apply(currentLang === 'en' ? 'en' : 'es');
+  apply(localStorage.getItem(KEY) === 'en' ? 'en' : 'es');
 })();
