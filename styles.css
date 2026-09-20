@@ -151,3 +151,23 @@ body.page-motion{--mx:50%;--my:50%}
  .post-photo{height:370px}
  .feed-topbar{padding:0 15px}
 }
+
+
+/* ───────── Cómo funciona ───────── */
+.how-page{min-height:100vh;overflow-x:hidden}
+.how-header{position:relative;z-index:10}
+.how-hero{min-height:72vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:5vw;max-width:1240px;margin:0 auto;padding:120px 7vw 80px}
+.how-hero .copy h1{font-family:Manrope,sans-serif;font-size:clamp(54px,7vw,96px);line-height:.92;letter-spacing:-.065em;margin:16px 0 28px}
+.how-hero .copy h1 span{color:#ff4fa3}
+.how-hero .lead{max-width:620px;color:#b9b4c1;font-size:18px;line-height:1.75}
+.how-orbit{position:relative;min-height:500px;display:grid;place-items:center}
+.how-orbit:before{content:"";position:absolute;width:430px;height:430px;border:1px solid rgba(255,79,163,.18);border-radius:50%;box-shadow:0 0 100px rgba(255,79,163,.10)}
+.how-orbit:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,79,163,.18),transparent 68%);filter:blur(8px)}
+.privacy-card{position:relative;z-index:2;width:min(340px,72vw);padding:28px;border:1px solid rgba(255,255,255,.13);border-radius:28px;background:linear-gradient(145deg,rgba(30,24,35,.96),rgba(10,9,13,.92));box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 55px rgba(255,79,163,.12);transform:rotate(5deg)}
+.privacy-card .shield{width:54px;height:54px;display:grid;place-items:center;border-radius:18px;background:rgba(255,79,163,.13);font-size:26px;margin-bottom:20px}
+.privacy-card h3{font:800 25px/1.1 Manrope,sans-serif;margin:0 0 10px}.privacy-card p{color:#aaa4b1;line-height:1.6;margin:0}.privacy-card .toggle{margin-top:24px;display:flex;justify-content:space-between;align-items:center;padding:14px 15px;border-radius:16px;background:rgba(255,255,255,.055);font-size:14px}.privacy-card .dot{width:42px;height:24px;border-radius:20px;background:#ff4fa3;position:relative}.privacy-card .dot:after{content:"";position:absolute;width:18px;height:18px;right:3px;top:3px;border-radius:50%;background:#fff}
+.how-steps{max-width:1240px;margin:0 auto;padding:80px 7vw 120px}.how-steps-head{text-align:center;max-width:720px;margin:0 auto 58px}.how-steps-head h2{font:800 clamp(38px,5vw,64px)/1 Manrope,sans-serif;letter-spacing:-.05em;margin:14px 0}.how-steps-head h2 span{color:#ff4fa3}.how-steps-head p{color:#aaa4b1;line-height:1.7}
+.how-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.how-step{position:relative;min-height:270px;padding:32px;border:1px solid rgba(255,255,255,.09);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));overflow:hidden;transition:transform .35s ease,border-color .35s ease}.how-step:hover{transform:translateY(-5px);border-color:rgba(255,79,163,.35)}.how-step:after{content:"";position:absolute;right:-70px;bottom:-80px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(255,79,163,.16),transparent 70%)}.step-num{font:800 13px/1 Manrope,sans-serif;color:#ff4fa3;letter-spacing:.15em}.how-step h3{font:800 28px/1.05 Manrope,sans-serif;margin:22px 0 13px}.how-step p{color:#aaa4b1;line-height:1.65;max-width:470px}.how-step strong{color:#f4f0f5}
+.how-privacy{max-width:1100px;margin:0 auto 120px;padding:0 7vw}.privacy-panel{padding:55px;position:relative;overflow:hidden;border-radius:34px;border:1px solid rgba(255,79,163,.22);background:radial-gradient(circle at 80% 10%,rgba(255,79,163,.12),transparent 35%),linear-gradient(145deg,#171019,#0b090d)}.privacy-panel h2{font:800 clamp(40px,5vw,70px)/.95 Manrope,sans-serif;letter-spacing:-.055em;margin:12px 0 20px;max-width:800px}.privacy-panel h2 span{color:#ff4fa3}.privacy-panel p{max-width:760px;color:#b8b2bd;font-size:18px;line-height:1.75}.privacy-points{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}.privacy-point{padding:18px;border-radius:18px;background:rgba(255,255,255,.045);color:#d9d4dc;line-height:1.5}.privacy-point b{display:block;color:#fff;margin-bottom:5px}
+.how-mantra{text-align:center;padding:40px 7vw 120px}.how-mantra .eyebrow{margin-bottom:18px}.how-mantra h2{font:800 clamp(45px,7vw,92px)/.94 Manrope,sans-serif;letter-spacing:-.065em;margin:0}.how-mantra h2 span{color:#ff4fa3}.how-mantra p{color:#aaa4b1;font-size:18px;margin-top:22px}
+@media(max-width:850px){.how-hero{grid-template-columns:1fr;padding-top:90px}.how-orbit{min-height:390px}.how-grid{grid-template-columns:1fr}.privacy-points{grid-template-columns:1fr}.privacy-panel{padding:34px 25px}.how-steps,.how-privacy{padding-left:5vw;padding-right:5vw}.how-hero{padding-left:5vw;padding-right:5vw}.how-mantra{padding-left:5vw;padding-right:5vw}}
