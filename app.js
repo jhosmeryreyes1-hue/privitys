@@ -208,14 +208,14 @@ feedWrap?.addEventListener('mouseleave',startFeedRotation);
     }
     if(toggle){toggle.textContent=lang==='es'?'EN':'ES'; toggle.setAttribute('aria-label',lang==='es'?'Switch to English':'Cambiar a español')}
   }
-  // Robust language toggle: always read the current HTML language/state, then switch.
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-lang-toggle]');
-    if (!btn) return;
-    e.preventDefault();
-    e.stopPropagation();
-    const next = root.lang === 'en' ? 'es' : 'en';
-    apply(next);
-  });
-  apply(localStorage.getItem(KEY) === 'en' ? 'en' : 'es');
+  // Language toggle: keep the state in one place so ES <-> EN always works.
+  if (toggle) {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      apply(currentLang === 'en' ? 'es' : 'en');
+    }, true);
+  }
+  const saved = localStorage.getItem(KEY);
+  apply(saved === 'en' ? 'en' : 'es');
 })();
