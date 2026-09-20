@@ -208,14 +208,16 @@ feedWrap?.addEventListener('mouseleave',startFeedRotation);
     }
     if(toggle){toggle.textContent=lang==='es'?'EN':'ES'; toggle.setAttribute('aria-label',lang==='es'?'Switch to English':'Cambiar a español')}
   }
-  // Language toggle: keep the state in one place so ES <-> EN always works.
-  if (toggle) {
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      apply(currentLang === 'en' ? 'es' : 'en');
-    }, true);
-  }
+  // Language toggle: delegated click handler so the same button can switch
+  // back and forth indefinitely without requiring a page refresh.
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest?.('[data-lang-toggle]');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const nextLang = currentLang === 'en' ? 'es' : 'en';
+    apply(nextLang);
+  });
   const saved = localStorage.getItem(KEY);
   apply(saved === 'en' ? 'en' : 'es');
 })();
