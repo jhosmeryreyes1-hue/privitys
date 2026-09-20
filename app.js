@@ -51,3 +51,53 @@ if(page.classList.contains('page-motion')){
 // Small stagger when feature cards enter the viewport.
 const featureCards=[...document.querySelectorAll('.features article')];
 featureCards.forEach((card,i)=>card.style.transitionDelay=`${i*70}ms`);
+
+// Party flyer carousel: swaps the active flyer continuously, with depth and side previews.
+const flyerStage=document.getElementById('flyerStage');
+const flyerCards=[...document.querySelectorAll('.party-flyer')];
+const flyerName=document.getElementById('flyerCurrentName');
+const flyerPlace=document.getElementById('flyerCurrentPlace');
+const flyerPrev=document.getElementById('flyerPrev');
+const flyerNext=document.getElementById('flyerNext');
+const flyerBar=document.getElementById('flyerProgressBar');
+let flyerIndex=0, flyerTimer=null, flyerStartX=0;
+const flyerPositions=[
+  {x:0,y:0,r:0,s:1,o:1,z:10,f:'brightness(1)'},
+  {x:230,y:-24,r:8,s:.83,o:.78,z:7,f:'brightness(.72)'},
+  {x:-230,y:-8,r:-8,s:.83,o:.72,z:6,f:'brightness(.62)'},
+  {x:395,y:30,r:14,s:.66,o:.35,z:4,f:'brightness(.45)'},
+  {x:-395,y:25,r:-14,s:.66,o:.32,z:3,f:'brightness(.42)'},
+  {x:0,y:0,r:0,s:.72,o:0,z:1,f:'brightness(.3)'}
+];
+function renderFlyers(){
+  flyerCards.forEach((card,i)=>{
+    const pos=(i-flyerIndex+flyerCards.length)%flyerCards.length;
+    const p=flyerPositions[Math.min(pos,flyerPositions.length-1)];
+    card.style.setProperty('--flyer-x',p.x+'px');
+    card.style.setProperty('--flyer-y',p.y+'px');
+    card.style.setProperty('--flyer-r',p.r+'deg');
+    card.style.setProperty('--flyer-s',p.s);
+    card.style.setProperty('--flyer-o',p.o);
+    card.style.zIndex=p.z;
+    card.style.filter=p.f;
+    card.classList.toggle('flyer-active',pos===0);
+  });
+  const active=flyerCards[flyerIndex];
+  if(active){
+    flyerName.textContent=active.dataset.title||'';
+    flyerPlace.textContent=active.dataset.place||'';
+  }
+  if(flyerBar){
+    flyerBar.style.transition='none'; flyerBar.style.width='0%';
+    requestAnimationFrame(()=>{flyerBar.style.transition='width 2.8s linear';flyerBar.style.width='100%'});
+  }
+}
+function moveFlyer(dir=1){flyerIndex=(flyerIndex+dir+flyerCards.length)%flyerCards.length;renderFlyers();}
+function startFlyerTimer(){clearInterval(flyerTimer);flyerTimer=setInterval(()=>moveFlyer(1),3000)}
+renderFlyers();startFlyerTimer();
+flyerNext?.addEventListener('click',()=>{moveFlyer(1);startFlyerTimer()});
+flyerPrev?.addEventListener('click',()=>{moveFlyer(-1);startFlyerTimer()});
+flyerStage?.addEventListener('mouseenter',()=>clearInterval(flyerTimer));
+flyerStage?.addEventListener('mouseleave',startFlyerTimer);
+flyerStage?.addEventListener('pointerdown',e=>{flyerStartX=e.clientX;flyerStage.setPointerCapture?.(e.pointerId)});
+flyerStage?.addEventListener('pointerup',e=>{const dx=e.clientX-flyerStartX;if(Math.abs(dx)>45){moveFlyer(dx<0?1:-1);startFlyerTimer()}});
