@@ -87,3 +87,67 @@ body.page-motion{--mx:50%;--my:50%}
 .party-flyer.flyer-photo .flyer-main{top:118px;text-shadow:0 5px 26px rgba(0,0,0,.7)}
 .party-flyer.flyer-photo .flyer-main b{color:#ff72bb;text-shadow:0 0 22px rgba(240,91,169,.38)}
 @media(max-width:520px){.flyer-line{left:17px;bottom:80px;font-size:6px}.party-flyer.flyer-photo .flyer-main{top:103px}}
+
+
+/* PRIVITYS NIGHT FEED */
+.privitys-feed{position:relative;display:grid;grid-template-columns:minmax(280px,.72fr) minmax(520px,1.28fr);gap:clamp(40px,7vw,110px);align-items:center;max-width:1180px;margin:0 auto;padding:clamp(100px,13vw,170px) 0;overflow:hidden}
+.privitys-feed:before{content:"";position:absolute;inset:15% 0 5%;background:radial-gradient(circle at 72% 45%,rgba(255,32,132,.13),transparent 34%),radial-gradient(circle at 15% 50%,rgba(104,50,255,.08),transparent 28%);pointer-events:none}
+.feed-intro{position:relative;z-index:2}
+.feed-intro h2{font-size:clamp(42px,5.1vw,72px);line-height:.98;letter-spacing:-.045em;margin:10px 0 24px}
+.feed-intro h2 span{background:linear-gradient(90deg,#fff 0%,#ff5aa8 75%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.feed-intro>p:not(.eyebrow){max-width:440px;color:rgba(255,255,255,.66);font-size:16px;line-height:1.75}
+.feed-rule{display:flex;gap:15px;align-items:center;margin-top:34px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);max-width:410px}
+.feed-rule>span{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:#ff2b87;color:#fff;font:800 13px/1 Manrope, sans-serif;box-shadow:0 0 28px rgba(255,43,135,.28)}
+.feed-rule p{margin:0;color:rgba(255,255,255,.5);font-size:13px;line-height:1.4}
+.feed-rule strong{color:#fff;font-size:15px}
+
+.feed-wrap{position:relative;z-index:2;width:min(100%,540px);justify-self:end;border:1px solid rgba(255,255,255,.12);border-radius:28px;background:rgba(10,9,15,.82);box-shadow:0 28px 90px rgba(0,0,0,.55),0 0 80px rgba(255,28,126,.08);overflow:hidden;backdrop-filter:blur(18px)}
+.feed-topbar{height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.42);letter-spacing:.03em}
+.feed-live{display:flex;align-items:center;gap:8px;color:#fff;font:800 10px/1 Manrope,sans-serif;letter-spacing:.1em}
+.feed-live span{width:7px;height:7px;border-radius:50%;background:#ff2d88;box-shadow:0 0 12px #ff2d88;animation:feedPulse 1.5s infinite}
+.feed-posts{position:relative;min-height:600px}
+.feed-post{background:#0d0c12}
+.feed-post:not(:first-child){display:none}
+.post-head{height:68px;display:flex;align-items:center;padding:0 18px;gap:11px}
+.avatar{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;color:#fff;font:800 14px/1 Manrope,sans-serif;border:2px solid rgba(255,255,255,.16)}
+.avatar-a{background:linear-gradient(135deg,#ff267e,#6e31ff)}
+.avatar-b{background:linear-gradient(135deg,#ff7849,#ff237d)}
+.avatar-c{background:linear-gradient(135deg,#8d38ff,#ff3a9d)}
+.post-user{display:flex;flex-direction:column;gap:3px;min-width:0}
+.post-user strong{font:700 13px/1.1 Manrope,sans-serif;color:#fff}
+.post-user span{font-size:10px;color:rgba(255,255,255,.42);white-space:nowrap}
+.post-more{margin-left:auto;border:0;background:none;color:rgba(255,255,255,.42);font-weight:800;letter-spacing:2px}
+.post-photo{height:425px;background-position:center;background-size:cover;position:relative}
+.post-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18),transparent 40%,rgba(0,0,0,.35))}
+.post-party,.post-time{position:absolute;z-index:1;top:15px;padding:8px 10px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(0,0,0,.38);backdrop-filter:blur(10px);font:800 9px/1 Manrope,sans-serif;letter-spacing:.08em}
+.post-party{left:15px}
+.post-time{right:15px}
+.post-body{padding:13px 17px 18px}
+.post-actions{display:flex;align-items:center;gap:4px;margin-bottom:8px}
+.feed-action{border:0;background:none;color:#fff;font-size:26px;line-height:1;padding:2px 7px;cursor:pointer;transition:transform .2s,color .2s}
+.feed-action:hover{transform:scale(1.12)}
+.like-action.liked{color:#ff2b87;text-shadow:0 0 16px rgba(255,43,135,.5)}
+.post-count{font:700 11px/1 Manrope,sans-serif;color:rgba(255,255,255,.62);margin-left:2px}
+.post-24{margin-left:auto;color:#ff5aa8;font:800 9px/1 Manrope,sans-serif;letter-spacing:.1em}
+.post-body p{margin:0 0 7px;color:rgba(255,255,255,.75);font-size:13px;line-height:1.5}
+.post-body p strong{color:#fff}
+.comments-link{border:0;background:none;padding:0;color:rgba(255,255,255,.38);font-size:11px;cursor:pointer}
+.comments-link:hover{color:#ff65ad}
+.feed-dots{height:42px;display:flex;justify-content:center;align-items:center;gap:6px;border-top:1px solid rgba(255,255,255,.06)}
+.feed-dots span{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.22);transition:.25s}
+.feed-dots span.active{width:18px;border-radius:10px;background:#ff2b87;box-shadow:0 0 10px rgba(255,43,135,.45)}
+@keyframes feedPulse{50%{opacity:.35;transform:scale(.72)}}
+.feed-post.feed-in{animation:feedIn .55s cubic-bezier(.2,.75,.25,1)}
+@keyframes feedIn{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+@media(max-width:900px){
+ .privitys-feed{grid-template-columns:1fr;padding-left:18px;padding-right:18px;gap:42px}
+ .feed-intro{max-width:650px}
+ .feed-wrap{justify-self:center;width:min(100%,540px)}
+}
+@media(max-width:560px){
+ .privitys-feed{padding-top:90px;padding-bottom:100px}
+ .feed-intro h2{font-size:42px}
+ .feed-wrap{border-radius:22px}
+ .post-photo{height:370px}
+ .feed-topbar{padding:0 15px}
+}

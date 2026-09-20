@@ -101,3 +101,38 @@ flyerStage?.addEventListener('mouseenter',()=>clearInterval(flyerTimer));
 flyerStage?.addEventListener('mouseleave',startFlyerTimer);
 flyerStage?.addEventListener('pointerdown',e=>{flyerStartX=e.clientX;flyerStage.setPointerCapture?.(e.pointerId)});
 flyerStage?.addEventListener('pointerup',e=>{const dx=e.clientX-flyerStartX;if(Math.abs(dx)>45){moveFlyer(dx<0?1:-1);startFlyerTimer()}});
+
+
+// PRIVITYS 24H feed: demo interactions and an automatic live-post rotation.
+const feedPosts=[...document.querySelectorAll('.feed-post')];
+const feedDots=[...document.querySelectorAll('.feed-dots span')];
+let feedIndex=0, feedTimer=null;
+function showFeedPost(index){
+  if(!feedPosts.length)return;
+  feedPosts.forEach((post,i)=>{
+    post.style.display=i===index?'block':'none';
+    post.classList.toggle('feed-in',i===index);
+  });
+  feedDots.forEach((dot,i)=>dot.classList.toggle('active',i===index));
+  feedIndex=index;
+}
+function startFeedRotation(){
+  clearInterval(feedTimer);
+  feedTimer=setInterval(()=>showFeedPost((feedIndex+1)%feedPosts.length),5200);
+}
+showFeedPost(0); startFeedRotation();
+
+document.querySelectorAll('.like-action').forEach(button=>{
+  button.addEventListener('click',()=>{
+    button.classList.toggle('liked');
+    button.textContent=button.classList.contains('liked')?'♥':'♡';
+  });
+});
+document.querySelectorAll('.comments-link').forEach(button=>{
+  button.addEventListener('click',()=>{
+    button.textContent=button.textContent.includes('comentarios')?'Comentarios abiertos · únete a la conversación':'Ver comentarios';
+  });
+});
+const feedWrap=document.querySelector('.feed-wrap');
+feedWrap?.addEventListener('mouseenter',()=>clearInterval(feedTimer));
+feedWrap?.addEventListener('mouseleave',startFeedRotation);
