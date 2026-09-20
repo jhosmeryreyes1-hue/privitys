@@ -76,3 +76,14 @@ body.page-motion{--mx:50%;--my:50%}
 .party-flyer.flyer-active{box-shadow:0 38px 95px rgba(240,91,169,.2),0 30px 70px rgba(0,0,0,.65)}
 @media(max-width:850px){.party-flyers{grid-template-columns:1fr;gap:10px;padding-top:45px;min-height:850px}.flyer-copy{text-align:center}.flyer-copy>p:not(.eyebrow){margin-left:auto;margin-right:auto}.flyer-controls{justify-content:center}.flyer-stage{height:520px;margin-top:0}}
 @media(max-width:520px){.party-flyers{padding:45px 20px 100px;min-height:760px}.party-flyer{width:215px;height:350px;border-radius:21px}.flyer-stage{height:430px;margin-left:-15px;margin-right:-15px}.flyer-main{font-size:41px;top:105px}.flyer-kicker{left:17px;top:17px}.flyer-place{left:17px;bottom:55px}.flyer-pill{left:17px;bottom:19px}.flyer-number{right:15px;bottom:18px}.flyer-caption{bottom:0}}
+
+/* V8 — photographic party flyers */
+.party-flyer.flyer-photo{overflow:hidden;background:#100b12 center/cover no-repeat;background-image:var(--flyer-photo);border:1px solid rgba(255,255,255,.16)}
+.party-flyer.flyer-photo::before{content:"";position:absolute;inset:0;background-image:var(--flyer-photo);background-size:cover;background-position:center;transform:scale(1.06);filter:saturate(1.1) contrast(1.04);z-index:0}
+.party-flyer.flyer-photo .flyer-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,4,8,.28) 0%,rgba(5,4,8,.02) 26%,rgba(5,4,8,.18) 44%,rgba(5,4,8,.88) 100%),linear-gradient(135deg,rgba(240,91,169,.32),transparent 46%)}
+.party-flyer.flyer-photo .flyer-noise{display:none}
+.party-flyer.flyer-photo .flyer-kicker,.party-flyer.flyer-photo .flyer-main,.party-flyer.flyer-photo .flyer-line,.party-flyer.flyer-photo .flyer-place,.party-flyer.flyer-photo .flyer-pill,.party-flyer.flyer-photo .flyer-number{z-index:3}
+.flyer-line{position:absolute;left:22px;right:18px;bottom:91px;font-size:7px;letter-spacing:.11em;font-weight:800;opacity:.9;z-index:2}
+.party-flyer.flyer-photo .flyer-main{top:118px;text-shadow:0 5px 26px rgba(0,0,0,.7)}
+.party-flyer.flyer-photo .flyer-main b{color:#ff72bb;text-shadow:0 0 22px rgba(240,91,169,.38)}
+@media(max-width:520px){.flyer-line{left:17px;bottom:80px;font-size:6px}.party-flyer.flyer-photo .flyer-main{top:103px}}
