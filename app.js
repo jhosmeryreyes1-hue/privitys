@@ -182,7 +182,7 @@ feedWrap?.addEventListener('mouseleave',startFeedRotation);
       en:{navFeatures:'Features',navParties:'Parties',navDownload:'Download',back:'Back',eyebrow:'HOW PRIVITYS WORKS',hero:'Your night.<br><span>Your people.</span><br>Your space.',lead:'Discover what’s happening near you, enter the party, connect with the people there, and experience it all in one place. You decide how much you share and with whom.',discover:'Discover parties',privacyTitle:'Privacy under your control',privacyText:'If you don’t want people to know you’re there, adjust your privacy settings. You decide how you appear and what you share.',private:'Private mode', splitText:'Use your location to discover what’s happening nearby. Enter a party space, see who’s there, share what’s happening, and connect with people living the same night.', splitL1:'📍 Parties near you', splitL2:'💬 Real-time interaction', splitL3:'♥ Matches inside the party', finalTitle:'Meet. Share.<br><span>Keep the night going.</span>', finalText:'Discover where something is happening and experience it with people on the same wavelength.',stepsEyebrow:'ONE APP. ALL NIGHT.',stepsTitle:'Everything you need<br><span>inside the party.</span>',stepsText:'PRIVITYS brings discovery, people, posts, and privacy together in one experience.',s1num:'01 · DISCOVER',s1h:'Find parties near you.',s1p:'Discover parties happening near you and explore other cities whenever you want. See the vibe, the place, and who’s there.',s2num:'02 · CONNECT',s2h:'Connect with people.',s2p:'Meet people living the same night. <strong>Match, chat, and make connections</strong> inside the party.',s3num:'03 · LIVE THE PARTY',s3h:'Do more without leaving the party.',s3p:'Find people, see what’s happening, share moments, and get what you need inside the party experience.',s4num:'04 · SHARE',s4h:'Post everything for 24 hours.',s4p:'Upload photos, videos, comments, and moments from the night. Content lives for <strong>24 hours</strong> and becomes part of that party’s story.',control:'YOU’RE IN CONTROL',controlTitle:'Don’t want people to know you’re there?<br><span>Set your privacy.</span>',controlText:'PRIVITYS is designed so you can enjoy the night without exposing yourself. Adjust your privacy settings to decide what you share, how you appear inside the party, and who can find you.',p1:'Private mode',p1t:'Control your visibility inside the experience.',p2:'Share when you want',p2t:'You decide what to post and when.',p3:'The night is temporary',p3t:'Party posts are designed to last for 24 hours.',mantra:'One night.<br><span>One life.</span><br>Enjoy without limits.',mantraText:'Completely private. What happens on PRIVITYS, stays on PRIVITYS.',home:'Home',privacy:'Privacy',terms:'Terms'}
     }
   };
-  const T = () => (isHow ? translations.how : translations.es)[currentLang];
+  const T = () => translations[isHow ? 'how' : 'es'][currentLang] || translations[isHow ? 'how' : 'es'].es;
   let currentLang = localStorage.getItem(KEY) || 'es';
   function set(sel, key, html=false){ const el=document.querySelector(sel); if(el && T()[key]!==undefined) html?el.innerHTML=T()[key]:el.textContent=T()[key]; }
   function setAll(sel,key,html=false){document.querySelectorAll(sel).forEach(el=>{if(T()[key]!==undefined)html?el.innerHTML=T()[key]:el.textContent=T()[key]})}
@@ -208,6 +208,9 @@ feedWrap?.addEventListener('mouseleave',startFeedRotation);
     }
     if(toggle){toggle.textContent=lang==='es'?'EN':'ES'; toggle.setAttribute('aria-label',lang==='es'?'Switch to English':'Cambiar a español')}
   }
-  toggle?.addEventListener('click',()=>apply(currentLang==='es'?'en':'es'));
-  apply(currentLang);
+  toggle?.addEventListener('click', (e) => {
+    e.preventDefault();
+    apply(currentLang === 'es' ? 'en' : 'es');
+  });
+  apply(currentLang === 'en' ? 'en' : 'es');
 })();
